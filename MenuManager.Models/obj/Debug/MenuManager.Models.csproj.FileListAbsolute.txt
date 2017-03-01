@@ -1,0 +1,4 @@
+C:\Users\olivi\OneDrive\Projects\System Requirements\Udining Project\UdiningMenuManager\MenuManager.Models\bin\Debug\MenuManager.Models.dll
+C:\Users\olivi\OneDrive\Projects\System Requirements\Udining Project\UdiningMenuManager\MenuManager.Models\bin\Debug\MenuManager.Models.pdb
+C:\Users\olivi\OneDrive\Projects\System Requirements\Udining Project\UdiningMenuManager\MenuManager.Models\obj\Debug\MenuManager.Models.dll
+C:\Users\olivi\OneDrive\Projects\System Requirements\Udining Project\UdiningMenuManager\MenuManager.Models\obj\Debug\MenuManager.Models.pdb
