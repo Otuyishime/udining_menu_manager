@@ -1,0 +1,158 @@
+﻿@model IEnumerable<MenuManager.Models.FoodLineViewModel>
+
+@using (Html.BeginForm(actionName: "PostMenu", controllerName: "Home", method: FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Feature line</h4>
+            <div id="feature_line_div">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon feature_line_title_addon">Title</span>
+                    <input type="text" class="form-control" placeholder="enter title">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="feature-line-add-btn">+</button>
+                    </span>
+                </div>
+                <br />
+                <div class="input-group input-group-sm feature-line-item">
+                    <span class="input-group-addon feature_line_title_addon">Item</span>
+                    <input type="text" class="form-control" placeholder="enter item">
+                    <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                    </span>
+                </div>
+                <br />
+                <div class="input-group input-group-sm feature-line-item">
+                    <span class="input-group-addon feature_line_title_addon">Item</span>
+                    <input type="text" class="form-control" placeholder="enter item">
+                    <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h4>Gluteen free line</h4>
+            <div id="gluteen_free_line_div">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon gluteen_line_title_addon">Title</span>
+                    <input type="text" class="form-control" placeholder="enter title">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="gluteen-line-add-btn">+</button>
+                    </span>
+                </div>
+                <br />
+                <div class="input-group input-group-sm gluteen-line-item">
+                    <span class="input-group-addon">Item</span>
+                    <input type="text" class="form-control" placeholder="enter item">
+                    <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                    </span>
+                </div>
+                <br />
+                <div class="input-group input-group-sm  gluteen-line-item">
+                    <span class="input-group-addon">Item</span>
+                    <input type="text" class="form-control" placeholder="enter item">
+                    <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h4>Chef station</h4>
+            <div id="chef_station_line_div">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon chef_line_title_addon">Title</span>
+                    <input type="text" class="form-control" placeholder="enter title">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="chef-line-add-btn">+</button>
+                    </span>
+                </div>
+                <br />
+                <div class="input-group input-group-sm chef-line-item">
+                    <span class="input-group-addon">Item</span>
+                    <input type="text" class="form-control" placeholder="enter item">
+                    <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                    </span>
+                </div>
+                <br />
+                <div class="input-group input-group-sm chef-line-item">
+                    <span class="input-group-addon">Item</span>
+                    <input type="text" class="form-control" placeholder="enter item">
+                    <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Fresh Market Gourmet Sandwich</h4>
+            <div id="fresh_market_gourmet_sandwich_line_div">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">Sandwich</span>
+                    <input type="text" class="form-control" placeholder="enter item">
+                    <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h4>Fresh Market Salads and Wraps</h4>
+            <div id="fresh_market_salad_wrap_line_div">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">Salads</span>
+                    <input type="text" class="form-control" placeholder="enter item">
+                    <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                    </span>
+                </div>
+                <br />
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">Wraps</span>
+                    <input type="text" class="form-control" placeholder="enter item">
+                    <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h4>Soup of the Day</h4>
+            <div id="soup_of_day_line_div">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">Soup 1</span>
+                    <input type="text" class="form-control" placeholder="enter item">
+                    <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                    </span>
+                </div>
+                <br />
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">Soup 2</span>
+                    <input type="text" class="form-control" placeholder="enter item">
+                    <span class="input-group-addon">
+                        <input type="checkbox" aria-label="...">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-1">
+            <button class="btn btn-default btn-sm" type="button">Save Menu</button>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-default btn-sm" type="button">Print Menu</button>
+        </div>
+    </div>
+}

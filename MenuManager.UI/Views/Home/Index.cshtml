@@ -1,0 +1,52 @@
+﻿@model MenuManager.Models.MenuViewModel
+@{
+    ViewBag.Title = "Home page";
+}
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <h3 style="text-align:center">Add Menu</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <p style="color:black">Select a date and meal time for the menu that you are entering, then enter the menu 
+        items for each line. The first line is used for the title of the menu if it has a title
+         that is not an item (like pancake bar or ravioli bar). If the menu doesn't need a title, 
+        leave it blank. Any fields you leave blank will be ignored (ex. If there is no chef station, 
+        leave it blank). Enter the soup at the bottom and click submit. Menus can be done as far
+        in advance as desired.</p>
+    </div>
+</div>
+<hr />
+@using (Html.BeginForm(actionName: "PostMenu", controllerName: "Home", method: FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col-md-4">
+            <div class="input-group input-group-sm">
+                <span class="input-group-addon feature_line_title_addon">Date</span>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group input-group-sm">
+                <span class="input-group-addon feature_line_title_addon">Meal</span>
+                <select class="form-control" id="sel1">
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <hr />
+    {Html.RenderPartial("_MenuPartial");}
+}
+
+@section scripts
+{
+    <script src="~/Scripts/udining_menu_manager.js?Build=@Guid.NewGuid().ToString()"></script>
+}
