@@ -28,7 +28,7 @@
         <div class="col-md-4">
             <div class="input-group input-group-sm">
                 <span class="input-group-addon feature_line_title_addon">Date</span>
-                <input type="date" class="form-control">
+                @Html.TextBoxFor(m => m.Menu_date, new { @class = "form-control", @type = "date" })
             </div>
         </div>
         <div class="col-md-4">
@@ -43,7 +43,7 @@
         </div>
     </div>
     <hr />
-    {Html.RenderPartial("_MenuPartial");}
+    {Html.RenderPartial("_MenuPartial", Model);}
 }
 
 @section scripts

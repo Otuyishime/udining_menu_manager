@@ -6,41 +6,61 @@
     });
 
     $('#feature-line-add-btn').on('click', function () {
-        $(
-            "<br />"+
-            "<div class=\"input-group input-group-sm feature-line-item\">"+
-                "<span class=\"input-group-addon feature_line_title_addon\">Item</span>" +
-                "<input type=\"text\" class=\"form-control\" placeholder=\"enter item\">" +
-                "<span class=\"input-group-addon\">" +
-                    "<input type=\"checkbox\" aria-label=\"...\">" +
-                "</span>" +
-            "</div>"
-        ).insertAfter('.feature-line-item:last').last();
+        $.ajax({
+            url: this.href,
+            method: 'POST',
+            cache: false,
+            success: function (html) {
+                $(html).insertAfter($('.Feature_Line_Item:last').closest('.form-group'));
+            }
+        });
+        return false;
     });
 
     $('#gluteen-line-add-btn').on('click', function () {
-        $(
-            "<br />" +
-            "<div class=\"input-group input-group-sm gluteen-line-item\">" +
-                "<span class=\"input-group-addon feature_line_title_addon\">Item</span>" +
-                "<input type=\"text\" class=\"form-control\" placeholder=\"enter item\">" +
-                "<span class=\"input-group-addon\">" +
-                    "<input type=\"checkbox\" aria-label=\"...\">" +
-                "</span>" +
-            "</div>"
-        ).insertAfter('.gluteen-line-item:last').last();
+        $.ajax({
+            url: this.href,
+            method: 'POST',
+            cache: false,
+            success: function (html) {
+                $(html).insertAfter($('.Gluteen_Free_Line_Item:last').closest('.form-group'));
+            }
+        });
+        return false;
     });
 
     $('#chef-line-add-btn').on('click', function () {
-        $(
-            "<br />" +
-            "<div class=\"input-group input-group-sm chef-line-item\">" +
-                "<span class=\"input-group-addon feature_line_title_addon\">Item</span>" +
-                "<input type=\"text\" class=\"form-control\" placeholder=\"enter item\">" +
-                "<span class=\"input-group-addon\">" +
-                    "<input type=\"checkbox\" aria-label=\"...\">" +
-                "</span>" +
-            "</div>"
-        ).insertAfter('.chef-line-item:last');
+        $.ajax({
+            url: this.href,
+            method: 'POST',
+            cache: false,
+            success: function (html) {
+                $(html).insertAfter($('.Chef_Line_Item:last').closest('.form-group'));
+            }
+        });
+        return false;
+    });
+
+    $('#save-menu-btn').on('click', function () {
+        alert('Save menu btn clicked!');
+    });
+
+    $('#print-menu-btn').on('click', function () {
+        alert('Print menu btn clicked!');
     });
 });
+
+//var item_num = $('.chef-line-item:last').data('item-num') + 1;
+//alert(item_num);
+//$(
+//    "<br />" +
+//    "<div class=\"form-group\"> " +
+//        "<div class=\"input-group input-group-sm chef-line-item\"" + "data-item-num=\"" + item_num + "\"" + ">" +
+//            "<span class=\"input-group-addon feature_line_title_addon\">Item</span>" +
+//            "<input class=\"form-control\" name=\"Chef_Line[" + item_num + "].Food_name\" placeholder=\"enter item\" type=\"text\" value=\"\">" +
+//            "<span class=\"input-group-addon\">" +
+//                "<input type=\"checkbox\" aria-label=\"...\">" +
+//            "</span>" +
+//        "</div>" +
+//    "</div>"
+//).insertAfter($('.chef-line-item:last').closest('.form-group'));

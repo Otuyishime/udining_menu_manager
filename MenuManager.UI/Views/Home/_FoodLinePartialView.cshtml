@@ -1,1 +1,20 @@
-﻿
+﻿@model MenuManager.Models.FoodLineViewModel
+
+<div class="form-group">
+    <div class="input-group input-group-sm">
+        @Html.LabelFor(m => m.Food_line_title, "Title", new { @class = "input-group-addon feature_line_title_addon" })
+        @Html.TextBoxFor(m => m.Food_line_title, new { @class = "form-control", @placeholder = "enter title" })
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" id="feature-line-add-btn">+</button>
+        </span>
+    </div>
+</div>
+<br />
+
+
+<div class="">
+    @foreach (var food in Model.Foods)
+{
+    { Html.RenderPartial("_FoodLineItem", food); }
+}
+</div>

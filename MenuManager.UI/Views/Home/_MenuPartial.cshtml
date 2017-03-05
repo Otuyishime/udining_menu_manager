@@ -1,144 +1,179 @@
-﻿@model IEnumerable<MenuManager.Models.FoodLineViewModel>
+﻿@using MenuManager.Models
+@model MenuViewModel
 
-@using (Html.BeginForm(actionName: "PostMenu", controllerName: "Home", method: FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
 
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="row">
-        <div class="col-md-4">
-            <h4>Feature line</h4>
-            <div id="feature_line_div">
+<div class="row">
+    <div class="col-md-4">
+        <h4>Feature line</h4>
+        <div id="feature_line_div">
+            <div class="form-group">
                 <div class="input-group input-group-sm">
-                    <span class="input-group-addon feature_line_title_addon">Title</span>
-                    <input type="text" class="form-control" placeholder="enter title">
+                    @Html.LabelFor(m => m.Feature_Line.Food_line_title, "Title", new { @class = "input-group-addon feature_line_title_addon" })
+                    @Html.TextBoxFor(m => m.Feature_Line.Food_line_title, new { @class = "form-control", @placeholder = "enter title" })
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" id="feature-line-add-btn">+</button>
-                    </span>
-                </div>
-                <br />
-                <div class="input-group input-group-sm feature-line-item">
-                    <span class="input-group-addon feature_line_title_addon">Item</span>
-                    <input type="text" class="form-control" placeholder="enter item">
-                    <span class="input-group-addon">
-                        <input type="checkbox" aria-label="...">
-                    </span>
-                </div>
-                <br />
-                <div class="input-group input-group-sm feature-line-item">
-                    <span class="input-group-addon feature_line_title_addon">Item</span>
-                    <input type="text" class="form-control" placeholder="enter item">
-                    <span class="input-group-addon">
-                        <input type="checkbox" aria-label="...">
+                        @Html.ActionLink("+", "GetBlankFoodField", "Home", new { item_name = "Feature_Line" }, 
+                       new {  @class="btn btn-default", @type="button", @id="feature-line-add-btn" })
                     </span>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <h4>Gluteen free line</h4>
-            <div id="gluteen_free_line_div">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-addon gluteen_line_title_addon">Title</span>
-                    <input type="text" class="form-control" placeholder="enter title">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" id="gluteen-line-add-btn">+</button>
-                    </span>
-                </div>
-                <br />
-                <div class="input-group input-group-sm gluteen-line-item">
-                    <span class="input-group-addon">Item</span>
-                    <input type="text" class="form-control" placeholder="enter item">
-                    <span class="input-group-addon">
-                        <input type="checkbox" aria-label="...">
-                    </span>
-                </div>
-                <br />
-                <div class="input-group input-group-sm  gluteen-line-item">
-                    <span class="input-group-addon">Item</span>
-                    <input type="text" class="form-control" placeholder="enter item">
-                    <span class="input-group-addon">
-                        <input type="checkbox" aria-label="...">
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <h4>Chef station</h4>
-            <div id="chef_station_line_div">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-addon chef_line_title_addon">Title</span>
-                    <input type="text" class="form-control" placeholder="enter title">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" id="chef-line-add-btn">+</button>
-                    </span>
-                </div>
-                <br />
-                <div class="input-group input-group-sm chef-line-item">
-                    <span class="input-group-addon">Item</span>
-                    <input type="text" class="form-control" placeholder="enter item">
-                    <span class="input-group-addon">
-                        <input type="checkbox" aria-label="...">
-                    </span>
-                </div>
-                <br />
-                <div class="input-group input-group-sm chef-line-item">
-                    <span class="input-group-addon">Item</span>
-                    <input type="text" class="form-control" placeholder="enter item">
-                    <span class="input-group-addon">
-                        <input type="checkbox" aria-label="...">
-                    </span>
-                </div>
+            <div class="feature-line-items">
+                @if (Model != null)
+                {
+                    var foodModel = new FoodViewModel();
+                    foreach (var food in Model.Feature_Line.Foods)
+                    {
+                        foodModel.item_name = "Feature_Line";
+                        foodModel.Food_name = food.Food_name;
+                        {
+                            Html.RenderPartial("_FoodLineItemPartialView", foodModel);
+                        }
+                    }
+                }
+                else
+                {
+                    var foodModel = new FoodViewModel();
+                    foodModel.item_name = "Feature_Line";
+                    foodModel.Food_name = null;
+                    {
+                        Html.RenderPartial("_FoodLineItemPartialView", foodModel);
+                    }
+                }
             </div>
         </div>
     </div>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <h4>Fresh Market Gourmet Sandwich</h4>
+    <div class="col-md-4">
+        <h4>Gluteen free line</h4>
+        <div id="gluteen_free_line_div">
+            <div class="form-group">
+                <div class="input-group input-group-sm">
+                    @Html.LabelFor(m => m.Gluteen_Free_Line.Food_line_title, "Title", new { @class = "input-group-addon gluteen_line_title_addon" })
+                    @Html.TextBoxFor(m => m.Gluteen_Free_Line.Food_line_title, new { @class = "form-control", @placeholder = "enter title" })
+                    <span class="input-group-btn">
+                        @Html.ActionLink("+", "GetBlankFoodField", "Home", new { item_name = "Gluteen_Free_Line" },
+                       new { @class = "btn btn-default", @type = "button", @id = "gluteen-line-add-btn" })
+                    </span>
+                </div>
+            </div>
+            <div class="gluteen-free-line-items">
+                @if (Model != null) {
+                    var foodModel = new FoodViewModel();
+                    foreach (var food in Model.Gluteen_Free_Line.Foods)
+                    {
+                        foodModel.item_name = "Gluteen_Free_Line";
+                        foodModel.Food_name = food.Food_name;
+                        {
+                            Html.RenderPartial("_FoodLineItemPartialView", foodModel);
+                        }
+                    }
+                }else
+                {
+                    var foodModel = new FoodViewModel();
+                    foodModel.item_name = "Gluteen_Free_Line";
+                    foodModel.Food_name = null;
+                    {
+                        Html.RenderPartial("_FoodLineItemPartialView", foodModel);
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h4>Chef station</h4>
+        <div id="chef_station_line_div">
+            <div class="form-group">
+                <div class="input-group input-group-sm">
+                    @Html.LabelFor(m => m.Chef_Line.Food_line_title, "Title", new { @class = "input-group-addon gluteen_line_title_addon" })
+                    @Html.TextBoxFor(m => m.Chef_Line.Food_line_title, new { @class = "form-control", @placeholder = "enter title" })
+                    <span class="input-group-btn">
+                        @Html.ActionLink("+", "GetBlankFoodField", "Home", new { item_name = "Chef_Line" },
+                       new { @class = "btn btn-default", @type = "button", @id = "chef-line-add-btn" })
+                    </span>
+                </div>
+            </div>
+            <div class="chef-line-items">
+                @if (Model != null)
+                {
+                    var foodModel = new FoodViewModel();
+                    foreach (var food in Model.Chef_Line.Foods)
+                    {
+                        foodModel.item_name = "Chef_Line";
+                        foodModel.Food_name = food.Food_name;
+                        {
+                            Html.RenderPartial("_FoodLineItemPartialView", foodModel);
+                        }
+                    }
+                }
+                else
+                {
+                    var foodModel = new FoodViewModel();
+                    foodModel.item_name = "Chef_Line";
+                    foodModel.Food_name = null;
+                    {
+                        Html.RenderPartial("_FoodLineItemPartialView", foodModel);
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h4>Fresh Market Gourmet Sandwich</h4>
+        <div class="form-group">
             <div id="fresh_market_gourmet_sandwich_line_div">
                 <div class="input-group input-group-sm">
                     <span class="input-group-addon">Sandwich</span>
-                    <input type="text" class="form-control" placeholder="enter item">
+                    <input class="form-control" name="Fresh_Market_Gourmet_Sandwich[0]Food_name" 
+                            placeholder="enter title" type="text" value="">
                     <span class="input-group-addon">
                         <input type="checkbox" aria-label="...">
                     </span>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <h4>Fresh Market Salads and Wraps</h4>
-            <div id="fresh_market_salad_wrap_line_div">
+    </div>
+    <div class="col-md-4">
+        <h4>Fresh Market Salads and Wraps</h4>
+        <div id="fresh_market_salad_wrap_line_div">
+            <div class="form-group">
                 <div class="input-group input-group-sm">
                     <span class="input-group-addon">Salads</span>
-                    <input type="text" class="form-control" placeholder="enter item">
+                        <input class="form-control" name="Fresh_Market_Salads_And_Wraps[0].Food_name" placeholder="enter item" type="text" value="">
                     <span class="input-group-addon">
                         <input type="checkbox" aria-label="...">
                     </span>
                 </div>
-                <br />
+            </div>
+            <br />
+            <div class="form-group">
                 <div class="input-group input-group-sm">
                     <span class="input-group-addon">Wraps</span>
-                    <input type="text" class="form-control" placeholder="enter item">
+                        <input class="form-control" name="Fresh_Market_Salads_And_Wraps[1].Food_name" placeholder="enter item" type="text" value="">
                     <span class="input-group-addon">
                         <input type="checkbox" aria-label="...">
                     </span>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <h4>Soup of the Day</h4>
-            <div id="soup_of_day_line_div">
+    </div>
+    <div class="col-md-4">
+        <h4>Soup of the Day</h4>
+        <div id="soup_of_day_line_div">
+            <div class="form-group">
                 <div class="input-group input-group-sm">
                     <span class="input-group-addon">Soup 1</span>
-                    <input type="text" class="form-control" placeholder="enter item">
+                        <input class="form-control" name="Soup_Of_The_Day[0].Food_name" placeholder="enter item" type="text" value="">
                     <span class="input-group-addon">
                         <input type="checkbox" aria-label="...">
                     </span>
                 </div>
-                <br />
+            </div>
+            <br />
+            <div class="form-group">
                 <div class="input-group input-group-sm">
                     <span class="input-group-addon">Soup 2</span>
-                    <input type="text" class="form-control" placeholder="enter item">
+                        <input class="form-control" name="Soup_Of_The_Day[1].Food_name" placeholder="enter item" type="text" value="">
                     <span class="input-group-addon">
                         <input type="checkbox" aria-label="...">
                     </span>
@@ -146,13 +181,22 @@
             </div>
         </div>
     </div>
-    <hr />
-    <div class="row">
-        <div class="col-md-1">
-            <button class="btn btn-default btn-sm" type="button">Save Menu</button>
-        </div>
-        <div class="col-md-1">
-            <button class="btn btn-default btn-sm" type="button">Print Menu</button>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-1">
+        <input type="submit" class="btn btn-default btn-sm" id="save-menu-btn" value="Save Menu" />
+    </div>
+    <div class="col-md-4">
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">Options</span>
+            <select class="form-control select-print-option">
+                <option value="food-line">Food Line</option>
+                <option value="each-line">Each Line</option>
+            </select>
+            <span class="input-group-btn">
+                <input type="submit" class="btn btn-default btn-sm" id="print-menu-btn" value="Print Menu" />
+            </span>
         </div>
     </div>
-}
+</div>

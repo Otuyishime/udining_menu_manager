@@ -6,6 +6,7 @@ namespace MenuManager.Models
     public partial class FoodLine
     {
         public string Food_line_title { get; set; }
-        public HashSet<Food> Foods { get; set; }
+
+        public List<Food> Foods { get; set; }
     }
 }

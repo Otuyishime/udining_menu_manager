@@ -14,6 +14,7 @@ C:\Users\olivi\OneDrive\Projects\System Requirements\Udining Project\UdiningMenu
 C:\Users\olivi\OneDrive\Projects\System Requirements\Udining Project\UdiningMenuManager\MenuManager.UI\bin\MenuManager.UI.dll
 C:\Users\olivi\OneDrive\Projects\System Requirements\Udining Project\UdiningMenuManager\MenuManager.UI\bin\MenuManager.UI.pdb
 C:\Users\olivi\OneDrive\Projects\System Requirements\Udining Project\UdiningMenuManager\MenuManager.UI\bin\Antlr3.Runtime.dll
+C:\Users\olivi\OneDrive\Projects\System Requirements\Udining Project\UdiningMenuManager\MenuManager.UI\bin\BeginCollectionItem.dll
 C:\Users\olivi\OneDrive\Projects\System Requirements\Udining Project\UdiningMenuManager\MenuManager.UI\bin\EntityFramework.dll
 C:\Users\olivi\OneDrive\Projects\System Requirements\Udining Project\UdiningMenuManager\MenuManager.UI\bin\EntityFramework.SqlServer.dll
 C:\Users\olivi\OneDrive\Projects\System Requirements\Udining Project\UdiningMenuManager\MenuManager.UI\bin\MenuManager.Models.dll

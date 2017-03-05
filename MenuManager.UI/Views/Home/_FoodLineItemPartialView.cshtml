@@ -1,8 +1,16 @@
-﻿
-<div class="input-group input-group-sm">
-    <span class="input-group-addon feature_line_title_addon">Item</span>
-    <input type="text" class="form-control" placeholder="enter item">
-    <span class="input-group-addon">
-        <input type="checkbox" aria-label="...">
-    </span>
-</div>
+﻿@using System
+@model MenuManager.Models.FoodViewModel
+
+@using (Html.BeginCollectionItem(String.Format("{0}.{1}", Model.item_name.ToString(), "Foods")))
+{
+    <br />
+    <div class="form-group">
+        <div class= "@String.Format("{0}{1}{2}", "input-group input-group-sm ", Model.item_name, "_Item")">
+            <span class="input-group-addon">Item</span>
+            @Html.TextBoxFor(m => m.Food_name, new { @class="form-control", @placeholder="enter item"})
+            <span class="input-group-addon">
+                <input type="checkbox" aria-label="...">
+            </span>
+        </div>
+    </div>
+}
