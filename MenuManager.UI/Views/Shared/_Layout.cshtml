@@ -20,17 +20,17 @@
                 @Html.ActionLink("Menu Manager", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                @*@if (Request.IsAuthenticated)
-                  {*@
+                @if (Request.IsAuthenticated)
+                  {
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("Edit Menu", "EditMenu", "Home")</li>
-                        @*@if (User.IsInRole("Admin"))
-                        {*@
+                        @if (User.IsInRole("Admin"))
+                        {
                             <li>@Html.ActionLink("Add User", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                        @*}*@
+                        }
                     </ul>
-                @*}*@
+                }
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

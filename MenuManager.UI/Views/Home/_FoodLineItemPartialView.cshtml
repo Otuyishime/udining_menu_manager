@@ -3,7 +3,6 @@
 
 @using (Html.BeginCollectionItem(String.Format("{0}.{1}", Model.item_name.ToString(), "Foods")))
 {
-    <br />
     <div class="form-group">
         <div class= "@String.Format("{0}{1}{2}", "input-group input-group-sm ", Model.item_name, "_Item")">
             <span class="input-group-addon">Item</span>

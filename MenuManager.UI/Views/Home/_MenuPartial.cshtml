@@ -120,65 +120,106 @@
 <div class="row">
     <div class="col-md-4">
         <h4>Fresh Market Gourmet Sandwich</h4>
-        <div class="form-group">
-            <div id="fresh_market_gourmet_sandwich_line_div">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-addon">Sandwich</span>
-                    <input class="form-control" name="Fresh_Market_Gourmet_Sandwich[0]Food_name" 
-                            placeholder="enter title" type="text" value="">
-                    <span class="input-group-addon">
-                        <input type="checkbox" aria-label="...">
-                    </span>
-                </div>
-            </div>
-        </div>
+        @if (Model != null)
+        {
+            Model.Fresh_Market_Gourmet_Sandwich.Food_line_title = String.Format("{0}", "Fresh Market Gourmet Sandwich");
+            @Html.HiddenFor(m => m.Fresh_Market_Gourmet_Sandwich.Food_line_title);
+
+            var foodModel = new FoodViewModel();
+            foreach (var food in Model.Fresh_Market_Gourmet_Sandwich.Foods)
+            {
+                foodModel.item_name = "Fresh_Market_Gourmet_Sandwich";
+                foodModel.Food_name = food.Food_name;
+                {
+                    Html.RenderPartial("_FoodLineItemPartialView", foodModel);
+                }
+            }
+        }
+        else
+        {
+            Model.Fresh_Market_Gourmet_Sandwich.Food_line_title = String.Format("{0}", "Fresh Market Gourmet Sandwich");
+            @Html.HiddenFor(m => m.Fresh_Market_Gourmet_Sandwich.Food_line_title);
+
+            var foodModel = new FoodViewModel();
+            foodModel.item_name = "Fresh_Market_Gourmet_Sandwich";
+            foodModel.Food_name = null;
+            <br />
+            {
+                Html.RenderPartial("_FoodLineItemPartialView", foodModel);
+            }
+        }
     </div>
     <div class="col-md-4">
         <h4>Fresh Market Salads and Wraps</h4>
         <div id="fresh_market_salad_wrap_line_div">
-            <div class="form-group">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-addon">Salads</span>
-                        <input class="form-control" name="Fresh_Market_Salads_And_Wraps[0].Food_name" placeholder="enter item" type="text" value="">
-                    <span class="input-group-addon">
-                        <input type="checkbox" aria-label="...">
-                    </span>
-                </div>
-            </div>
-            <br />
-            <div class="form-group">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-addon">Wraps</span>
-                        <input class="form-control" name="Fresh_Market_Salads_And_Wraps[1].Food_name" placeholder="enter item" type="text" value="">
-                    <span class="input-group-addon">
-                        <input type="checkbox" aria-label="...">
-                    </span>
-                </div>
-            </div>
+            @if (Model != null)
+            {
+                Model.Fresh_Market_Salads_And_Wraps.Food_line_title = "Fresh Market Salads and Wraps";
+                @Html.HiddenFor(m => m.Fresh_Market_Salads_And_Wraps.Food_line_title);
+
+                var foodModel = new FoodViewModel();
+                foreach (var food in Model.Fresh_Market_Salads_And_Wraps.Foods)
+                {
+                    foodModel.item_name = "Fresh_Market_Salads_And_Wraps";
+                    foodModel.Food_name = food.Food_name;
+                    {
+                        Html.RenderPartial("_FoodLineItemPartialView", foodModel);
+                    }
+                }
+            }
+            else
+            {
+                Model.Fresh_Market_Salads_And_Wraps.Food_line_title = "Fresh Market Salads and Wraps";
+                @Html.HiddenFor(m => m.Fresh_Market_Salads_And_Wraps.Food_line_title);
+                
+
+
+                for (int i = 0; i < 2; i++)
+                {
+                    var foodModel = new FoodViewModel();
+                    foodModel.item_name = "Fresh_Market_Salads_And_Wraps";
+                    foodModel.Food_name = null;
+                    <br />
+                    {
+                        Html.RenderPartial("_FoodLineItemPartialView", foodModel);
+                    }
+                }
+            }
         </div>
     </div>
     <div class="col-md-4">
         <h4>Soup of the Day</h4>
         <div id="soup_of_day_line_div">
-            <div class="form-group">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-addon">Soup 1</span>
-                        <input class="form-control" name="Soup_Of_The_Day[0].Food_name" placeholder="enter item" type="text" value="">
-                    <span class="input-group-addon">
-                        <input type="checkbox" aria-label="...">
-                    </span>
-                </div>
-            </div>
-            <br />
-            <div class="form-group">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-addon">Soup 2</span>
-                        <input class="form-control" name="Soup_Of_The_Day[1].Food_name" placeholder="enter item" type="text" value="">
-                    <span class="input-group-addon">
-                        <input type="checkbox" aria-label="...">
-                    </span>
-                </div>
-            </div>
+            @if (Model != null)
+            {
+                Model.Soup_Of_The_Day.Food_line_title = "Soup of the Day";
+                @Html.HiddenFor(m => m.Soup_Of_The_Day.Food_line_title);
+
+                var foodModel = new FoodViewModel();
+                foreach (var food in Model.Soup_Of_The_Day.Foods)
+                {
+                    foodModel.item_name = "Soup_Of_The_Day";
+                    foodModel.Food_name = food.Food_name;
+                    {
+                        Html.RenderPartial("_FoodLineItemPartialView", foodModel);
+                    }
+                }
+            }
+            else
+            {
+                Model.Soup_Of_The_Day.Food_line_title = "Soup of the Day";
+                @Html.HiddenFor(m => m.Soup_Of_The_Day.Food_line_title);
+
+                for (int i = 0; i < 2; i++)
+                {
+                    var foodModel = new FoodViewModel();
+                    foodModel.item_name = "Soup_Of_The_Day";
+                    foodModel.Food_name = null;
+                    {
+                        Html.RenderPartial("_FoodLineItemPartialView", foodModel);
+                    }
+                }
+            }
         </div>
     </div>
 </div>

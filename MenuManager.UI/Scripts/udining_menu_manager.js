@@ -42,7 +42,6 @@
     });
 
     $('#save-menu-btn').on('click', function () {
-        alert('Save menu btn clicked!');
     });
 
     $('#print-menu-btn').on('click', function () {
